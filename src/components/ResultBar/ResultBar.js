@@ -7,11 +7,7 @@ class ResultBar extends React.Component {
 
   extractNums = str => {
     const regex = /[0-9]*/;
-    return str.match(regex);
-  }
-
-  onInputChange = e => {
-    this.props.onInputChange(Number(this.extractNums(e.target.value)));
+    return str.match(regex)[0];
   }
 
   onFormSubmit = e => {
@@ -19,22 +15,21 @@ class ResultBar extends React.Component {
   }
 
   inputValueHandler() {
-    if (!this.props.result) return this.props.value;
-    return this.props.result
+    if (!this.props.value) return this.props.result;
+    return this.props.value;
   }
 
   render() {
     return (
-      <div>
+      <>
         <form onSubmit={this.onFormSubmit}>
           <input
-            className="input"
             value={this.inputValueHandler()}
-            onChange={this.onInputChange}
+            onChange={e => this.props.onInputChange(this.extractNums(e.target.value))}
             onClick={e => e.target.select()}
           />
         </form>
-      </div>
+      </>
     )
   }
 }

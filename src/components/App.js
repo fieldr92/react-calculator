@@ -7,8 +7,9 @@ import OperatorButtons from './Buttons/OperatorButtons';
 class App extends React.Component {
   state = {
     value: 0,
-    operator: null,
-    result: 0
+    result: 0,
+    valuesArr: [],
+    operatorsArr: []
   }
 
   onInputChange = value => {
@@ -19,36 +20,44 @@ class App extends React.Component {
     if (this.state.value === 0) {
       this.setState({ value });
     } else {
-      const newValue = this.state.value.toString() + value.toString();
-      this.setState({ value: Number(newValue) });
+      this.setState({ value: this.state.value.toString() + value.toString() });
     }
   }
 
   onOperatorClick = operator => {
+    const { result, value, valuesArr, operatorsArr } = this.state;
     this.setState({
-      result: Number(this.state.value),
+      valuesArr: [...valuesArr, value],
+      operatorsArr: [...operatorsArr, operator],
+      result: value,
       value: 0
     });
-    this.evaluateAnswer(this.state.result, operator);
-  }
-
-  evaluateAnswer(prev, operator) {
-    if (operator !== '=' || operator === 'null') {
-      const result = eval(`${prev}${operator}${this.state.value}`);
-      this.setState({
-        result,
-        operator
-      });
-      console.log(result);
-    } else {
-      const result = eval(`${prev}${this.state.operator}${this.state.value}`);
-      console.log(result);
-      this.setState({ result: prev, value: result, operator: null });
+    for (let i = valuesArr.length; i <= valuesArr.length; i++) {
+      if (i > 0) {
+        switch (operatorsArr[i - 1]) {
+          case '+':
+            this.setState({ result: result + Number(value), value: 0 });
+            break;
+          case '-':
+            this.setState({ result: result - Number(value), value: 0 });
+            break;
+          case '*':
+            this.setState({ result: result * Number(value), value: 0 });
+            break;
+          case '/':
+            this.setState({ result: result / Number(value), value: 0 });
+            break;
+          case '=':
+            this.setState({ result });
+            break;
+          default: console.log('HOW HAVE YOU DONE THIS?!')
+        }
+      }
     }
   }
 
   onClearClick = () => {
-    this.setState({ value: 0, result: 0 });
+    this.setState({ value: 0, result: 0, valuesArr: [], operatorsArr: [] });
   }
 
   render() {
