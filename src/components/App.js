@@ -32,27 +32,29 @@ class App extends React.Component {
       result: value,
       value: 0
     });
-    for (let i = valuesArr.length; i <= valuesArr.length; i++) {
-      if (i > 0) {
-        switch (operatorsArr[i - 1]) {
-          case '+':
-            this.setState({ result: result + Number(value), value: 0 });
-            break;
-          case '-':
-            this.setState({ result: result - Number(value), value: 0 });
-            break;
-          case '*':
-            this.setState({ result: result * Number(value), value: 0 });
-            break;
-          case '/':
-            this.setState({ result: result / Number(value), value: 0 });
-            break;
-          case '=':
-            this.setState({ result });
-            break;
-          default: console.log('HOW HAVE YOU DONE THIS?!')
-        }
-      }
+    if (valuesArr.length > 0) {
+      this.calculate(valuesArr.length, value, result, operatorsArr);
+    }
+  }
+
+  calculate(lastIndex, value, result, operatorsArr) {
+    switch (operatorsArr[lastIndex - 1]) {
+      case '+':
+        this.setState({ result: Number(result) + Number(value), value: 0 });
+        break;
+      case '-':
+        this.setState({ result: Number(result) - Number(value), value: 0 });
+        break;
+      case '*':
+        this.setState({ result: Number(result) * Number(value), value: 0 });
+        break;
+      case '/':
+        this.setState({ result: Number(result) / Number(value), value: 0 });
+        break;
+      case '=':
+        this.setState({ result });
+        break;
+      default: console.log('HOW HAVE YOU DONE THIS?!')
     }
   }
 
