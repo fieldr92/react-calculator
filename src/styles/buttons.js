@@ -1,7 +1,10 @@
 const styles = {
   root: {
-    height: 50
+    fontSize: 30,
+    height:70,
+    margin: 5,
+    borderRadius: 0
   }
-}
+};
 
 export default styles;

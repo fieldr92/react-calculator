@@ -1,18 +1,19 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import buttons from '../../styles/buttons';
 
 const styles = {
   root: {
     ...buttons.root,
-    width: 128
+    width: '100%'
   }
 };
 
 const ClearButton = ({ onClearClick, classes }) => {
-  return(
-    <div>
+  return (
+    <Grid item xs={8}>
       <Button
         variant="outlined"
         color="primary"
@@ -21,8 +22,8 @@ const ClearButton = ({ onClearClick, classes }) => {
       >
       {"CLEAR"}
       </Button>
-    </div>
+    </Grid>
   )
-}
+};
 
 export default withStyles(styles)(ClearButton);

@@ -1,14 +1,15 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-// import Grid from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid';
 import ResultBar from './ResultBar/ResultBar';
 import NumberButtons from './Buttons/NumberButtons';
 import ClearButton from './Buttons/ClearButton';
 import OperatorButtons from './Buttons/OperatorButtons';
 
 const styles = theme => ({
-  root: {
-
+  container: {
+    width: '300px',
+    margin: "0 auto"
   }
 });
 
@@ -33,15 +34,17 @@ class App extends React.Component {
   }
 
   onOperatorClick = operator => {
-    const { result, value, valuesArr, operatorsArr } = this.state;
-    this.setState({
-      valuesArr: [...valuesArr, value],
-      operatorsArr: [...operatorsArr, operator],
-      result: value,
-      value: 0
-    });
-    if (valuesArr.length > 0) {
-      this.calculate(valuesArr.length, value, result, operatorsArr);
+    if (this.state.value) {
+      const { result, value, valuesArr, operatorsArr } = this.state;
+      this.setState({
+        valuesArr: [...valuesArr, value],
+        operatorsArr: [...operatorsArr, operator],
+        result: value,
+        value: 0
+      });
+      if (valuesArr.length > 0) {
+        this.calculate(valuesArr.length, value, result, operatorsArr);
+      }
     }
   }
 
@@ -71,16 +74,22 @@ class App extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <div>
-        <ResultBar
-          value={this.state.value}
-          result={this.state.result}
-          onInputChange={this.onInputChange}
-        />
-        <NumberButtons onNumberClick={this.onNumberClick} />
-        <ClearButton onClearClick={this.onClearClick} />
-        <OperatorButtons onOperatorClick={this.onOperatorClick} />
+      <div className={classes.container}>
+        <Grid container className={classes.root} spacing={16}>
+          <ResultBar
+            value={this.state.value}
+            result={this.state.result}
+            onInputChange={this.onInputChange}
+          />
+        </Grid>
+        <Grid container className={classes.root} spacing={16}>
+          <NumberButtons onNumberClick={this.onNumberClick} />
+          <ClearButton onClearClick={this.onClearClick} />
+          <OperatorButtons onOperatorClick={this.onOperatorClick} />
+        </Grid>
       </div>
     )
   }
