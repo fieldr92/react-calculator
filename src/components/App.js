@@ -1,8 +1,16 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+// import Grid from '@material-ui/core/Grid';
 import ResultBar from './ResultBar/ResultBar';
 import NumberButtons from './Buttons/NumberButtons';
 import ClearButton from './Buttons/ClearButton';
 import OperatorButtons from './Buttons/OperatorButtons';
+
+const styles = theme => ({
+  root: {
+
+  }
+});
 
 class App extends React.Component {
   state = {
@@ -78,4 +86,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);

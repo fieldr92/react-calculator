@@ -1,28 +1,36 @@
 import React from 'react';
-import Button from './Button.js';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import buttons from '../../styles/buttons';
 
-class NumberButtons extends React.Component {
-
-  createButtons() {
-    let numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ];
-    return numbers.map(number => {
-      return <Button
-        key={`numKey${number}`}
-        value={number}
-        onButtonClick={this.props.onNumberClick}
-      />
-    });
+const styles = {
+  root: {
+    ...buttons.root,
+    width: 50
   }
+};
 
-  render() {
-    return (
-      <div className="num-buttons">
-        <div className="grid-items">
-          {this.createButtons()}
-        </div>
-      </div>
-    )
-  }
+const createButtons = ({ onNumberClick, classes }) => {
+  const numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ];
+  return numbers.map(number => {
+    return <Button
+      variant="outlined"
+      color="primary"
+      key={`numKey${number}`}
+      onClick={() => onNumberClick(number)}
+      classes={{ root: classes.root }}
+    >
+    {number}
+    </Button>
+  });
 }
 
-export default NumberButtons;
+const NumberButtons = props => {
+  return (
+    <div>
+      {createButtons(props)}
+    </div>
+  )
+}
+
+export default withStyles(styles)(NumberButtons);

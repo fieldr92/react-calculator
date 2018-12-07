@@ -1,26 +1,36 @@
 import React from 'react';
-import Button from './Button';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import buttons from '../../styles/buttons';
 
-class OperatorButtons extends React.Component {
-  
-  createButtons() {
-    const operators = ['+', '-', '/', '*', '='];
-    return operators.map(operator => {
-      return <Button
-        key={`numKey${operator}`}
-        value={operator}
-        onButtonClick={this.props.onOperatorClick}
-      />
-    })
+const styles = {
+  root: {
+    ...buttons.root,
+    width: 50
   }
+};
 
-  render() {
-    return(
-      <div>
-        {this.createButtons()}
-      </div>
-    )
-  }
+const createButtons = ({ onOperatorClick, classes }) => {
+  const operators = ['+', '-', '/', '*', '='];
+  return operators.map(operator => {
+    return <Button
+      variant="outlined"
+      color="primary"
+      key={`numKey${operator}`}
+      onClick={() => onOperatorClick(operator)}
+      classes={{ root: classes.root }}
+    >
+    {operator}
+    </Button>
+  })
 }
 
-export default OperatorButtons;
+const OperatorButtons = props => {
+  return (
+    <div>
+      {createButtons(props)}
+    </div>
+  )
+}
+
+export default withStyles(styles)(OperatorButtons);

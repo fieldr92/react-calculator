@@ -1,37 +1,44 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
-class ResultBar extends React.Component {
-  state = {
-    result: this.props.result
-  }
-
-  extractNums = str => {
-    const regex = /[0-9]*/;
-    return str.match(regex)[0];
-  }
-
-  onFormSubmit = e => {
-    e.preventDefault();
-  }
-
-  inputValueHandler() {
-    if (!this.props.value) return this.props.result;
-    return this.props.value;
-  }
-
-  render() {
-    return (
-      <>
-        <form onSubmit={this.onFormSubmit}>
-          <input
-            value={this.inputValueHandler()}
-            onChange={e => this.props.onInputChange(this.extractNums(e.target.value))}
-            onClick={e => e.target.select()}
-          />
-        </form>
-      </>
-    )
+const styles = {
+  root: {
+    borderRadius: 0
   }
 }
 
-export default ResultBar;
+const extractNums = str => {
+  const regex = /[0-9]*/;
+  return str.match(regex)[0];
+}
+
+const onFormSubmit = e => {
+  e.preventDefault();
+}
+
+const inputValueHandler = (value, result) => {
+  if (!value) return result;
+  return value;
+}
+
+const ResultBar = ({ onInputChange, value, result, classes }) => {
+  return (
+    <div>
+      <form onSubmit={onFormSubmit}>
+        <TextField
+          label="Result"
+          margin="normal"
+          variant="outlined"
+          color="primary"
+          value={inputValueHandler(value, result)}
+          onChange={e => onInputChange(extractNums(e.target.value))}
+          onClick={e => e.target.select()}
+          classes={{ root: classes.roots }}
+        />
+      </form>
+    </div>
+  )
+}
+
+export default withStyles(styles)(ResultBar);

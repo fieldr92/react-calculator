@@ -1,15 +1,28 @@
 import React from 'react';
-import Button from './Button';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import buttons from '../../styles/buttons';
 
-const ClearButton = props => {
+const styles = {
+  root: {
+    ...buttons.root,
+    width: 128
+  }
+};
+
+const ClearButton = ({ onClearClick, classes }) => {
   return(
     <div>
       <Button
-        onButtonClick={props.onClearClick}
-        value="CLEAR"
-      />
+        variant="outlined"
+        color="primary"
+        onClick={() => onClearClick()}
+        classes={{ root: classes.root }}
+      >
+      {"CLEAR"}
+      </Button>
     </div>
   )
 }
 
-export default ClearButton;
+export default withStyles(styles)(ClearButton);
