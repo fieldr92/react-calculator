@@ -1,0 +1,14 @@
+body {
+  font-family: Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #dff9fb;
+  margin: 0;
+}
+
+.title-bar {
+  padding: 5px;
+  margin: 0;
+  text-align: center;
+  background-color: #222f3e;
+  color: white;
+  border-bottom: 2px solid white;
+}

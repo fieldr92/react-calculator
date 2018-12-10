@@ -1,12 +1,20 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
 
 const styles = {
   root: {
     borderRadius: 0,
-    width: '100%'
+    width: '100%',
+    color: 'white'
+  },
+  input: {
+    padding: 20,
+    fontSize: 30,
+    textAlign: 'right',
+    border: '1px solid green',
+    borderRadius: '4px 4px 0 0'
   }
 };
 
@@ -28,15 +36,12 @@ const ResultBar = ({ onInputChange, value, result, classes }) => {
   return (
     <Grid item xs={12}>
       <form onSubmit={onFormSubmit}>
-        <TextField
-          label="Result"
-          margin="normal"
-          variant="outlined"
-          color="primary"
+        <Input
+          color="secondary"
           value={inputValueHandler(value, result)}
           onChange={e => onInputChange(extractNums(e.target.value))}
           onClick={e => e.target.select()}
-          classes={{ root: classes.roots }}
+          classes={{ root: classes.root, input: classes.input }}
         />
       </form>
     </Grid>
