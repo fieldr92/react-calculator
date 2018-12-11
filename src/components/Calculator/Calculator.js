@@ -11,7 +11,9 @@ const styles = {
     width: '300px',
     margin: "30px auto",
     backgroundColor: '#222f3e',
-    borderRadius: 4
+    border: '2px solid black',
+    padding: 3,
+    borderRadius: 5
   }
 };
 
@@ -19,7 +21,6 @@ class Calculator extends React.Component {
   state = {
     value: 0,
     result: 0,
-    valuesArr: [],
     operatorsArr: []
   }
 
@@ -36,33 +37,43 @@ class Calculator extends React.Component {
   }
 
   onOperatorClick = operator => {
-    const { result, value, valuesArr, operatorsArr } = this.state;
-    if (this.state.value) {
+    const { result, value, operatorsArr } = this.state;
+    if (operator !== '=' && this.state.value) {
       this.setState({
-        valuesArr: [...valuesArr, value],
         operatorsArr: [...operatorsArr, operator],
         result: value,
         value: 0
       });
-      if (valuesArr.length > 0) {
-        this.calculate(valuesArr.length, value, result, operatorsArr);
-      }
+    }
+    if (operator !== '=' && !this.state.value) {
+      this.setState({
+        operatorsArr: [...operatorsArr, operator]
+      });
+    }
+    if (operator === '=') {
+      this.setState({
+        operatorsArr: [],
+        value: 0
+      });
+    }
+    if (operatorsArr.length > 0) {
+      this.calculate(operatorsArr.length, value, result, operatorsArr);
     }
   }
 
-  calculate(lastIndex, value, result, operatorsArr) {
-    switch (operatorsArr[lastIndex - 1]) {
+  calculate(arrLength, value, result, operatorsArr) {
+    switch (operatorsArr[arrLength - 1]) {
       case '+':
-        this.setState({ result: Number(result) + Number(value), value: 0 });
+        this.setState({ result: Number(result) + Number(value) });
         break;
       case '-':
-        this.setState({ result: Number(result) - Number(value), value: 0 });
+        this.setState({ result: Number(result) - Number(value) });
         break;
       case '*':
-        this.setState({ result: Number(result) * Number(value), value: 0 });
+        this.setState({ result: Number(result) * Number(value) });
         break;
       case '/':
-        this.setState({ result: Number(result) / Number(value), value: 0 });
+        this.setState({ result: Number(result) / Number(value) });
         break;
       case '=':
         this.setState({ result: Number(result) });

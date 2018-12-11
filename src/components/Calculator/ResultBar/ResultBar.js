@@ -41,7 +41,10 @@ const ResultBar = ({ onInputChange, value, result, classes }) => {
           value={inputValueHandler(value, result)}
           onChange={e => onInputChange(extractNums(e.target.value))}
           onClick={e => e.target.select()}
-          classes={{ root: classes.root, input: classes.input }}
+          classes={{
+            root: classes.root,
+            input: classes.input
+          }}
         />
       </form>
     </Grid>
