@@ -13,7 +13,8 @@ const styles = {
     padding: 20,
     fontSize: 30,
     textAlign: 'right',
-    border: '1px solid green'
+    border: '1px solid #26a65b50',
+    borderRadius: '4px 4px 0 0'
   }
 };
 

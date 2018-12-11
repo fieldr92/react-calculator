@@ -22,7 +22,7 @@ const createButtons = ({ onOperatorClick, classes }) => {
   return operators.map(operator => {
     let opStyle = { xs: 3, color: 'primary' };
     if (operator === '=') {
-      opStyle.xs = 12;
+      opStyle.xs = 4;
       opStyle.color = 'primary'
     }
     return (

@@ -10,5 +10,6 @@ body {
   text-align: center;
   background-color: #222f3e;
   color: #f5f6fa;
+  border-top: 2px solid #26a65b;
   border-bottom: 2px solid #f50057;
 }

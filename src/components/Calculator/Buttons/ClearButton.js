@@ -7,20 +7,21 @@ import buttons from '../../../styles/buttons';
 const styles = {
   root: {
     ...buttons.root,
-    width: '100%'
+    width: '100%',
+    borderRadius: '0 0 4px 4px'
   }
 };
 
 const ClearButton = ({ onClearClick, classes }) => {
   return (
-    <Grid item xs={4}>
+    <Grid item xs={12}>
       <Button
         variant="outlined"
         color="secondary"
         onClick={() => onClearClick()}
         classes={{ root: classes.root }}
       >
-      {"C"}
+      {"CLEAR"}
       </Button>
     </Grid>
   )

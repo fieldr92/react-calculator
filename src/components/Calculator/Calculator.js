@@ -110,8 +110,8 @@ class Calculator extends React.Component {
         </Grid>
         <Grid container className={classes.root} spacing={0}>
           <NumberButtons onNumberClick={this.onNumberClick} />
-          <ClearButton onClearClick={this.onClearClick} />
           <OperatorButtons onOperatorClick={this.onOperatorClick} />
+          <ClearButton onClearClick={this.onClearClick} />
         </Grid>
       </div>
     )
