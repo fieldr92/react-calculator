@@ -26,45 +26,41 @@ class Calculator extends React.Component {
   }
 
   onInputChange = value => {
-    this.setState({ value });
+    !value ? this.setState({ value: 0 }) : this.setState({ value });
   }
 
   onNumberClick = value => {
-    if (this.state.value === 0) {
-      this.setState({ value });
-    } else {
+    this.state.value === 0 ?
+      this.setState({ value }) :
       this.setState({ value: this.state.value.toString() + value.toString() });
-    }
   }
 
   onOperatorClick = operator => {
     const { result, value, valuesArr, operatorsArr } = this.state;
-    if (operator !== '=' && value) {
-      this.setState({
-        operatorsArr: [...operatorsArr, operator],
-        valuesArr: [...valuesArr, value],
-        result: Number(value),
-        value: 0
-      });
+    if (operator !== '=') {
+      !value ?
+        this.setState({
+          operatorsArr: [...operatorsArr, operator],
+          valuesArr: [...valuesArr, value]
+        }) :
+        this.setState({
+          operatorsArr: [...operatorsArr, operator],
+          valuesArr: [...valuesArr, value],
+          result: Number(value),
+          value: 0
+        });
     }
-    if (operator !== '=' && !value) {
-      this.setState({
-        operatorsArr: [...operatorsArr, operator],
-        valuesArr: [...valuesArr, value]
-      });
-    }
-    if (operator === '=' && result) {
-      this.setState({
-        operatorsArr: [],
-        valuesArr: [],
-        value: 0,
-      });
-    }
-    if (operator === '=' && !result) {
-      this.setState({
-        operatorsArr: [],
-        valuesArr: []
-      });
+    if (operator === '=') {
+      !result ?
+        this.setState({
+          operatorsArr: [],
+          valuesArr: []
+        }) :
+        this.setState({
+          operatorsArr: [],
+          valuesArr: [],
+          value: 0,
+        });
     }
     if (valuesArr.length > 0) {
       this.calculate(operatorsArr.length, value, result, operatorsArr);
@@ -88,7 +84,7 @@ class Calculator extends React.Component {
       case '=':
         this.setState({ result: Number(result) });
         break;
-      default: console.log('HOW HAVE YOU DONE THIS?!')
+      default: console.log('Calculation type not found (how did you do this?!)...');
     }
   }
 
