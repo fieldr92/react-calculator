@@ -13,7 +13,7 @@ const styles = {
 };
 
 const createButtons = ({ onNumberClick, classes }) => {
-  const numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 ];
+  const numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '.' ];
   return numbers.map(number => {
     return (
       <Grid item xs={4} key={`numKey${number}`}>

@@ -13,13 +13,12 @@ const styles = {
     padding: 20,
     fontSize: 30,
     textAlign: 'right',
-    border: '1px solid green',
-    borderRadius: '4px 4px 0 0'
+    border: '1px solid green'
   }
 };
 
 const extractNums = str => {
-  const regex = /[0-9]*/;
+  const regex = /\d*(\.\d*)?/;
   return str.match(regex)[0];
 };
 
@@ -37,14 +36,10 @@ const ResultBar = ({ onInputChange, value, result, classes }) => {
     <Grid item xs={12}>
       <form onSubmit={onFormSubmit}>
         <Input
-          color="secondary"
           value={inputValueHandler(value, result)}
           onChange={e => onInputChange(extractNums(e.target.value))}
           onClick={e => e.target.select()}
-          classes={{
-            root: classes.root,
-            input: classes.input
-          }}
+          classes={{ root: classes.root, input: classes.input }}
         />
       </form>
     </Grid>

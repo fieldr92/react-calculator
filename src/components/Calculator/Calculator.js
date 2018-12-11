@@ -21,7 +21,8 @@ class Calculator extends React.Component {
   state = {
     value: 0,
     result: 0,
-    operatorsArr: []
+    operatorsArr: [],
+    valuesArr: [],
   }
 
   onInputChange = value => {
@@ -37,26 +38,35 @@ class Calculator extends React.Component {
   }
 
   onOperatorClick = operator => {
-    const { result, value, operatorsArr } = this.state;
-    if (operator !== '=' && this.state.value) {
+    const { result, value, valuesArr, operatorsArr } = this.state;
+    if (operator !== '=' && value) {
       this.setState({
         operatorsArr: [...operatorsArr, operator],
-        result: value,
+        valuesArr: [...valuesArr, value],
+        result: Number(value),
         value: 0
       });
     }
-    if (operator !== '=' && !this.state.value) {
+    if (operator !== '=' && !value) {
       this.setState({
-        operatorsArr: [...operatorsArr, operator]
+        operatorsArr: [...operatorsArr, operator],
+        valuesArr: [...valuesArr, value]
       });
     }
-    if (operator === '=') {
+    if (operator === '=' && result) {
       this.setState({
         operatorsArr: [],
-        value: 0
+        valuesArr: [],
+        value: 0,
       });
     }
-    if (operatorsArr.length > 0) {
+    if (operator === '=' && !result) {
+      this.setState({
+        operatorsArr: [],
+        valuesArr: []
+      });
+    }
+    if (valuesArr.length > 0) {
       this.calculate(operatorsArr.length, value, result, operatorsArr);
     }
   }
@@ -83,7 +93,7 @@ class Calculator extends React.Component {
   }
 
   onClearClick = () => {
-    this.setState({ value: 0, result: 0, valuesArr: [], operatorsArr: [] });
+    this.setState({ value: 0, result: 0, operatorsArr: [], valuesArr: [] });
   }
 
   render() {
@@ -100,8 +110,8 @@ class Calculator extends React.Component {
         </Grid>
         <Grid container className={classes.root} spacing={0}>
           <NumberButtons onNumberClick={this.onNumberClick} />
-          <OperatorButtons onOperatorClick={this.onOperatorClick} />
           <ClearButton onClearClick={this.onClearClick} />
+          <OperatorButtons onOperatorClick={this.onOperatorClick} />
         </Grid>
       </div>
     )
