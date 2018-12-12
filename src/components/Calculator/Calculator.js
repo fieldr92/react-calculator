@@ -26,7 +26,9 @@ class Calculator extends React.Component {
   }
 
   onInputChange = value => {
-    !value ? this.setState({ value: 0 }) : this.setState({ value });
+    !value ?
+      this.setState({ value: 0 }) :
+      this.setState({ value });
   }
 
   onNumberClick = value => {
@@ -37,7 +39,9 @@ class Calculator extends React.Component {
 
   onOperatorClick = operator => {
     const { result, value, valuesArr, operatorsArr } = this.state;
+
     if (operator !== '=') {
+      console.log('!==', Boolean(value));
       !value ?
         this.setState({
           operatorsArr: [...operatorsArr, operator],
@@ -50,6 +54,7 @@ class Calculator extends React.Component {
           value: 0
         });
     }
+
     if (operator === '=') {
       !result ?
         this.setState({
@@ -62,6 +67,7 @@ class Calculator extends React.Component {
           value: 0,
         });
     }
+
     if (valuesArr.length > 0) {
       this.calculate(operatorsArr.length, value, result, operatorsArr);
     }
@@ -110,7 +116,7 @@ class Calculator extends React.Component {
           <ClearButton onClearClick={this.onClearClick} />
         </Grid>
       </div>
-    )
+    );
   }
 }
 

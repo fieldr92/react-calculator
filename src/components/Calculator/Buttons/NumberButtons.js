@@ -3,12 +3,11 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import buttons from '../../../styles/buttons';
+import '../../../styles/App.css';
 
 const styles = {
   root: {
-    ...buttons.root,
-    width: '100%',
-    color: 'white'
+    ...buttons.root
   }
 };
 

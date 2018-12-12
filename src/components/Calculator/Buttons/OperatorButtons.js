@@ -7,10 +7,7 @@ import buttons from '../../../styles/buttons';
 
 const styles = {
   root: {
-    ...buttons.root,
-    width: '100%',
-    color: 'white',
-    // border: '1px solid #00b16a50'
+    ...buttons.root
   },
   palette: {
     primary: green
