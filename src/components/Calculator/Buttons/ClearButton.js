@@ -8,7 +8,8 @@ import '../../../styles/App.css';
 const styles = {
   root: {
     ...buttons.root,
-    borderRadius: '0 0 4px 4px'
+    borderRadius: '0 0 4px 4px',
+    color: '#f50057'
   }
 };
 

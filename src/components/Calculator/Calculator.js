@@ -11,9 +11,9 @@ const styles = {
     width: '300px',
     margin: "30px auto",
     backgroundColor: '#222f3e',
-    border: '2px solid black',
-    padding: 3,
-    borderRadius: 5
+    border: '1px solid black',
+    padding: 1,
+    borderRadius: 4
   }
 };
 
@@ -76,19 +76,23 @@ class Calculator extends React.Component {
   calculate(arrLength, value, result, operatorsArr) {
     switch (operatorsArr[arrLength - 1]) {
       case '+':
-        this.setState({ result: Number(result) + Number(value) });
+      console.log('+');
+        this.setState({ result: result + Number(value) });
         break;
       case '-':
-        this.setState({ result: Number(result) - Number(value) });
+      console.log('-');
+        this.setState({ result: result - Number(value) });
         break;
       case '*':
-        this.setState({ result: Number(result) * Number(value) });
+      console.log('*');
+        this.setState({ result: result * Number(value) });
         break;
       case '/':
-        this.setState({ result: Number(result) / Number(value) });
+      console.log('/');
+        this.setState({ result: result / Number(value) });
         break;
       case '=':
-        this.setState({ result: Number(result) });
+        this.setState({ result });
         break;
       default: console.log('Calculation type not found (how did you do this?!)...');
     }
