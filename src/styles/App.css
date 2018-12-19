@@ -1,6 +1,6 @@
 body {
   font-family: 'Cutive Mono', Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #f5f6fa;
+  background-color: #ffffff;
   margin: 0;
 }
 
@@ -8,7 +8,7 @@ body {
   padding: 5px;
   margin: 0;
   text-align: center;
-  background-color: #222f3e;
+  background-color: #353b48;
   color: #f5f6fa;
   border-top: 2px solid #26a65b;
   border-bottom: 2px solid #f50057;

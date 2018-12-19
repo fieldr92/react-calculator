@@ -5,7 +5,8 @@ const styles = {
     margin: 0,
     borderRadius: 0,
     fontFamily: 'Cutive Mono',
-    color: 'white',
+    color: '#222f3e',
+    backgroundColor: '#f7f1e3',
     width: '100%'
   }
 };

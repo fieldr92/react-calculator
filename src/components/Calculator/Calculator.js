@@ -10,7 +10,7 @@ const styles = {
   container: {
     width: '300px',
     margin: "30px auto",
-    backgroundColor: '#222f3e',
+    backgroundColor: '#f7f1e3',
     border: '1px solid black',
     padding: 1,
     borderRadius: 4
