@@ -8,7 +8,7 @@ import '../../../styles/App.css';
 const styles = {
   root: {
     ...buttons.root,
-    borderRadius: '0 0 4px 4px',
+    borderRadius: '0 0 3px 3px',
     color: '#f50057'
   }
 };
@@ -22,7 +22,7 @@ const ClearButton = ({ onClearClick, classes }) => {
         onClick={() => onClearClick()}
         classes={{ root: classes.root }}
       >
-      {"CLEAR"}
+      CLEAR
       </Button>
     </Grid>
   )

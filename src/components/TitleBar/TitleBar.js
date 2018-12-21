@@ -6,7 +6,7 @@ const TitleBar = () => {
     <>
       <div className='title-bar'>
         <h1>
-          CALCULATOR
+          RALPHULATOR
         </h1>
       </div>
     </>

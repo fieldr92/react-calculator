@@ -41,7 +41,7 @@ class Calculator extends React.Component {
     const { result, value, valuesArr, operatorsArr } = this.state;
 
     if (operator !== '=') {
-      console.log('!==', Boolean(value));
+      console.log('!== "="', Boolean(value));
       !value ?
         this.setState({
           operatorsArr: [...operatorsArr, operator],

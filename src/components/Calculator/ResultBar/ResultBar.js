@@ -14,7 +14,7 @@ const styles = {
     fontSize: 30,
     textAlign: 'right',
     backgroundColor: '#353b48',
-    borderRadius: '4px 4px 0 0',
+    borderRadius: '3px 3px 0 0',
     fontFamily: 'Cutive Mono'
   }
 };
